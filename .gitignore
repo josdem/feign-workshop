@@ -1,0 +1,7 @@
+**swp
+**swo
+.gradle/
+.idea/
+build/
+target/
+src/main/resources/application.properties
