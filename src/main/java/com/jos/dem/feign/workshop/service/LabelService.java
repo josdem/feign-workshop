@@ -1,24 +1,21 @@
 package com.jos.dem.feign.workshop.service;
 
-import retrofit2.Call;
+import com.jos.dem.feign.workshop.model.Label;
+import com.jos.dem.feign.workshop.model.LabelResponse;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.Path;
-import retrofit2.http.POST;
-import retrofit2.http.PATCH;
-import retrofit2.http.DELETE;
-
-import com.jos.dem.feign.workshop.model.Label;
-import com.jos.dem.feign.workshop.model.LabelResponse;
 
 public interface LabelService {
 
-  @POST("repos/josdem/retrofit-workshop/labels")
-  Call<LabelResponse> create(@Body Label label);
-  @PATCH("repos/josdem/retrofit-workshop/labels/{name}")
-  Call<LabelResponse> update(@Body Label label, @Path("name") String name);
-  @DELETE("repos/josdem/retrofit-workshop/labels/{name}")
-  Call<Response<Void>> delete(@Path("name") String name);
+  @RequestMapping(method = RequestMethod.POST, value = "repos/josdem/retrofit-workshop/labels")
+  LabelResponse create(@Body Label label);
+  @RequestMapping(method = RequestMethod.PATCH, value ="repos/josdem/retrofit-workshop/labels/{name}")
+  LabelResponse update(@Body Label label, @Path("name") String name);
+  @RequestMapping(method = RequestMethod.DELETE, value = "repos/josdem/retrofit-workshop/labels/{name}")
+  Response<Void> delete(@Path("name") String name);
 
 
 }
