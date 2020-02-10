@@ -1,15 +1,14 @@
 package com.jos.dem.feign.workshop.service;
 
+import com.jos.dem.feign.workshop.model.PublicEmail;
+import com.jos.dem.feign.workshop.model.SSHKey;
 import java.util.List;
-
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import retrofit2.Call;
-import retrofit2.http.GET;
 
-import com.jos.dem.feign.workshop.model.SSHKey;
-import com.jos.dem.feign.workshop.model.PublicEmail;
-
+@FeignClient(name="UserService", url= "${github.api.url}")
 public interface UserService {
 
   @RequestMapping(method = RequestMethod.GET, value ="users/josdem/keys")

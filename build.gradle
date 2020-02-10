@@ -20,9 +20,15 @@ configurations {
   }
 }
 
-repositories {
-  mavenCentral()
+buildscript {
+  repositories {
+    maven { url 'https://repo.spring.io/plugins-snapshot' }
+  }
+  dependencies {
+    classpath 'io.spring.gradle:dependency-management-plugin:1.0.7.BUILD-SNAPSHOT'
+  }
 }
+
 
 dependencies {
   implementation('org.springframework.boot:spring-boot-starter-webflux')
